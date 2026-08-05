@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linga — Intro Card</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 24px;
+    max-width: 640px;
+    width: 100%;
+    padding: 40px 44px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+  .avatar {
+    width: 74px; height: 74px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; font-weight: 700; letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+  h1 { font-size: 30px; color: #0f172a; letter-spacing: .5px; }
+  .tagline { color: #64748b; font-size: 15px; margin-top: 4px; }
+  .badges { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .badge {
+    background: #eef2ff; color: #4338ca;
+    font-size: 12px; font-weight: 600;
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .section { margin-top: 22px; }
+  .section-title {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: #94a3b8; font-weight: 700; margin-bottom: 8px;
+  }
+  .row { display: flex; align-items: center; gap: 10px; padding: 7px 0; color: #1e293b; font-size: 15px; }
+  .ico {
+    width: 26px; height: 26px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; background: #f1f5f9; flex-shrink: 0;
+  }
+  a { color: #4338ca; text-decoration: none; font-weight: 600; word-break: break-all; }
+  a:hover { text-decoration: underline; }
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill { background: #f1f5f9; border: 1px solid #e2e8f0; color: #334155; padding: 6px 12px; border-radius: 10px; font-size: 14px; font-weight: 500; }
+  .footer {
+    margin-top: 26px; padding-top: 18px;
+    border-top: 1px dashed #e2e8f0;
+    display: flex; align-items: center; gap: 18px;
+  }
+  .qr-img { width: 130px; height: 130px; border: 1px solid #e2e8f0; border-radius: 10px; padding: 4px; }
+  .qr-note { color: #64748b; font-size: 13px; line-height: 1.5; }
+  .qr-note b { color: #0f172a; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .card { box-shadow: none; border-radius: 0; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="avatar">L</div>
+      <div>
+        <h1>HI, I'M LINGA</h1>
+        <div class="tagline">M.S. Lingaprasad &middot; Techie &middot; Problem Solver &middot; Overthinker</div>
+        <div class="badges">
+          <span class="badge">App Development</span>
+          <span class="badge">LLM Research</span>
+          <span class="badge">Tamil &middot; English</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Reach me</div>
+      <div class="row"><span class="ico">&#128222;</span><span>+91 94442 51948</span></div>
+      <div class="row"><span class="ico">&#128247;</span><span>Instagram: <a href="https://instagram.com/linga_avenger" target="_blank">@linga_avenger</a></span></div>
+      <div class="row"><span class="ico">&#128188;</span><span>LinkedIn: <a href="https://www.linkedin.com/in/lingaprasad-m-s-728177371" target="_blank">lingaprasad-m-s</a></span></div>
+      <div class="row"><span class="ico">&#128205;</span><span>Based in Pallikarnai, Chennai</span></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">What I do</div>
+      <div class="skills">
+        <span class="skill">App development</span>
+        <span class="skill">LLM research</span>
+        <span class="skill">Problem solving</span>
+        <span class="skill">Overthinking (productively)</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Languages</div>
+      <div class="skills">
+        <span class="skill">Tamil</span>
+        <span class="skill">English</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <img class="qr-img" src="qr_url.png" alt="QR code - scan to open Linga's live intro page">
+      <div class="qr-note">
+        <b>Scan this QR</b> to open my live intro page.<br>
+        Print this page (Ctrl+P) or share the link: <b>lingaprasad-2008.github.io/linga-intro</b>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
