@@ -61,14 +61,24 @@
   a:hover { text-decoration: underline; }
   .skills { display: flex; flex-wrap: wrap; gap: 8px; }
   .skill { background: #f1f5f9; border: 1px solid #e2e8f0; color: #334155; padding: 6px 12px; border-radius: 10px; font-size: 14px; font-weight: 500; }
+  .actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 24px; }
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 18px; border-radius: 14px; border: 2px solid #e2e8f0;
+    background: #fff; color: #334155; font-size: 15px; font-weight: 600;
+    text-decoration: none; cursor: pointer; font-family: inherit;
+    transition: transform .08s ease, box-shadow .15s ease;
+  }
+  .btn:hover { border-color: #4338ca; color: #4338ca; box-shadow: 0 6px 16px rgba(79,70,229,.15); }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: linear-gradient(135deg, #4f46e5, #0ea5e9); color: #fff; border: none; }
+  .btn-primary:hover { color: #fff; border: none; opacity: .92; }
   .footer {
     margin-top: 26px; padding-top: 18px;
     border-top: 1px dashed #e2e8f0;
-    display: flex; align-items: center; gap: 18px;
+    color: #64748b; font-size: 13px; text-align: center; line-height: 1.6;
   }
-  .qr-img { width: 130px; height: 130px; border: 1px solid #e2e8f0; border-radius: 10px; padding: 4px; }
-  .qr-note { color: #64748b; font-size: 13px; line-height: 1.5; }
-  .qr-note b { color: #0f172a; }
+  .footer b { color: #0f172a; }
   @media print {
     body { background: #fff; padding: 0; }
     .card { box-shadow: none; border-radius: 0; padding: 24px; }
@@ -92,10 +102,13 @@
 
     <div class="section">
       <div class="section-title">Reach me</div>
-      <div class="row"><span class="ico">&#128222;</span><span>+91 94442 51948</span></div>
-      <div class="row"><span class="ico">&#128247;</span><span>Instagram: <a href="https://instagram.com/linga_avenger" target="_blank">@linga_avenger</a></span></div>
-      <div class="row"><span class="ico">&#128188;</span><span>LinkedIn: <a href="https://www.linkedin.com/in/lingaprasad-m-s-728177371" target="_blank">lingaprasad-m-s</a></span></div>
-      <div class="row"><span class="ico">&#128205;</span><span>Based in Pallikarnai, Chennai</span></div>
+      <div class="actions">
+        <a class="btn btn-primary" href="tel:+919444251948">Call me</a>
+        <a class="btn" href="https://instagram.com/linga_avenger" target="_blank">Instagram</a>
+        <a class="btn" href="https://www.linkedin.com/in/lingaprasad-m-s-728177371" target="_blank">LinkedIn</a>
+        <button class="btn" id="copyBtn" onclick="copyDetails()">Copy details</button>
+      </div>
+      <div class="row" style="margin-top:14px"><span class="ico">&#128205;</span><span>Based in Pallikarnai, Chennai</span></div>
     </div>
 
     <div class="section">
@@ -117,12 +130,23 @@
     </div>
 
     <div class="footer">
-      <img class="qr-img" src="qr_url.png" alt="QR code - scan to open Linga's live intro page">
-      <div class="qr-note">
-        <b>Scan this QR</b> to open my live intro page.<br>
-        Print this page (Ctrl+P) or share the link: <b>lingaprasad-2008.github.io/linga-intro</b>
-      </div>
+      Tap a button to call or connect, or <b>Copy details</b> to save my info to your clipboard.<br>
+      Share this page: <b>lingaprasad-2008.github.io/MY-INTRO</b>
     </div>
   </div>
+  <script>
+    function copyDetails() {
+      var text = "HI, I'M LINGA\nM.S. Lingaprasad\nTechie | Problem Solver | Overthinker\n\nLocation: Pallikarnai, Chennai, India\n\nPhone: +91 94442 51948\nInstagram: @linga_avenger\nLinkedIn: linkedin.com/in/lingaprasad-m-s-728177371\n\nLanguages: Tamil, English\n\nWhat I do:\n- App development\n- LLM research\n- Problem solving (with a healthy dose of overthinking)";
+      var btn = document.getElementById('copyBtn');
+      function flash() { var o = btn.textContent; btn.textContent = "Copied!"; setTimeout(function(){ btn.textContent = o; }, 1800); }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(flash, flash);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta); flash();
+      }
+    }
+  </script>
 </body>
 </html>
