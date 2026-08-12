@@ -18,10 +18,11 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.PAGES_TOKEN }}
+          REPO: ${{ github.repository }}
           MINUTES: ${{ github.event.inputs.expire_in_minutes }}
         run: |
           expiry=$(( $(date +%s) + MINUTES * 60 ))
-          gh variable set AUTO_PRIVATE_AT --body "$expiry"
+          gh variable set AUTO_PRIVATE_AT --body "$expiry" -R "$REPO"
           echo "Timer set: repo becomes private at $(date -u -d @$expiry) UTC"
 
       - name: Check expiry and make private
@@ -30,7 +31,7 @@ jobs:
           GH_TOKEN: ${{ secrets.PAGES_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
-          expiry=$(gh variable get AUTO_PRIVATE_AT 2>/dev/null || echo "")
+          expiry=$(gh variable get AUTO_PRIVATE_AT -R "$REPO" 2>/dev/null || echo "")
           if [ -z "$expiry" ]; then
             echo "No timer set."
             exit 0
@@ -39,7 +40,7 @@ jobs:
           if [ "$now" -ge "$expiry" ]; then
             echo "Timer expired. Making repo private..."
             gh repo edit "$REPO" --visibility private
-            gh variable delete AUTO_PRIVATE_AT 2>/dev/null || true
+            gh variable delete AUTO_PRIVATE_AT -R "$REPO" 2>/dev/null || true
             echo "Done: repo is now private."
           else
             mins=$(( (expiry - now) / 60 ))
